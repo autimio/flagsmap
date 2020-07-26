@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import MapboxGL from '@react-native-mapbox-gl/maps';
+import BackgroundTimer from 'react-native-background-timer';
 
 import _ from 'underscore';
 
@@ -10,6 +11,18 @@ MapboxGL.setAccessToken(
 function App() {
   const [images, setImages] = useState({});
   const [shape, setShape] = useState({features: [], type: 'FeatureCollection'});
+
+  function onHandlePressShape() {
+    alert('cliquei aqui');
+  }
+
+  useEffect(() => {
+    BackgroundTimer.runBackgroundTimer(() => {
+      console.log('test call in background....');
+    }, 3000);
+
+    BackgroundTimer.stopBackgroundTimer();
+  }, []);
 
   useEffect(() => {
     function onMountFeatures() {
@@ -77,6 +90,7 @@ function App() {
       <MapboxGL.Images images={images} />
       <MapboxGL.ShapeSource
         id="shapeSourceDefault"
+        onPress={onHandlePressShape}
         clusterRadius={10}
         clusterMaxZoomLevel={8}
         cluster={true}
