@@ -13,6 +13,8 @@ target 'flagsmap' do
 
   pod 'react-native-background-timer', :path => '../node_modules/react-native-background-timer'
 
+  pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
+
   target 'flagsmapTests' do
     inherit! :complete
     # Pods for testing
