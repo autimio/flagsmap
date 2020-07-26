@@ -1,24 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import MapboxGL from '@react-native-mapbox-gl/maps';
 import BackgroundTimer from 'react-native-background-timer';
 
-import {getCurrentPostion} from '../../utils/Geolocation';
-import {
-  requestLocationPermission,
-  grantedlocation,
-} from '../../utils/Permission';
+import { getCurrentPostion } from '../../utils/Geolocation';
+import { requestLocationPermission } from '../../utils/Permission';
 
 import Flag from '../../utils/Flag';
 
 import _ from 'underscore';
 
-MapboxGL.setAccessToken(
-  'pk.eyJ1IjoiYXV0aW1pbyIsImEiOiJja2F0MnZtdjAwZGNqMnhucm9zZDRib3diIn0.BP7QhaCLplGE_Y09tF7qAQ',
-);
+MapboxGL.setAccessToken('pk.eyJ1IjoiYXV0aW1pbyIsImEiOiJja2F0MnZtdjAwZGNqMnhucm9zZDRib3diIn0.BP7QhaCLplGE_Y09tF7qAQ');
 
 function Home() {
   const [images, setImages] = useState({});
-  const [shape, setShape] = useState({features: [], type: 'FeatureCollection'});
+  const [shape, setShape] = useState({ features: [], type: 'FeatureCollection' });
 
   function onHandlePressShape() {
     alert('pressed');
@@ -37,9 +32,7 @@ function Home() {
     async function checkPermission() {
       const grantedLocation = await requestLocationPermission();
       if (!grantedLocation && _.isEqual('android', Platform.OS)) {
-        alert(
-          'Ative as permissões de geolocalização na configuração do seus dispositivo!',
-        );
+        alert('Ative as permissões de geolocalização na configuração do seus dispositivo!');
       }
     }
 
@@ -70,7 +63,7 @@ function Home() {
           }
         });
 
-        setShape({type: 'FeatureCollection', features});
+        setShape({ type: 'FeatureCollection', features });
         setImages(imagesIcon);
       }
 
@@ -96,7 +89,7 @@ function Home() {
   }, []);
 
   return (
-    <MapboxGL.MapView style={{flex: 1}} styleURL={MapboxGL.StyleURL.Dark}>
+    <MapboxGL.MapView style={{ flex: 1 }} styleURL={MapboxGL.StyleURL.Dark}>
       <MapboxGL.Camera centerCoordinate={[-25, -5]} zoomLevel={0.5} />
       <MapboxGL.Images images={images} />
       <MapboxGL.ShapeSource
