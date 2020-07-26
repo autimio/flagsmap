@@ -11,6 +11,24 @@ import _ from 'underscore';
 
 MapboxGL.setAccessToken('pk.eyJ1IjoiYXV0aW1pbyIsImEiOiJja2F0MnZtdjAwZGNqMnhucm9zZDRib3diIn0.BP7QhaCLplGE_Y09tF7qAQ');
 
+const SHAPES = [
+  {
+    id: 'brasil',
+    coordinates: [-49.286041, -16.665136],
+    image: Flag['brasil'],
+  },
+  {
+    id: 'colombia',
+    coordinates: [-73.0810547, 4914894],
+    image: Flag['colombia'],
+  },
+  {
+    id: 'africadosul',
+    coordinates: [24.2578125, -30.9022247],
+    image: Flag['africadosul'],
+  },
+];
+
 function Home() {
   const [images, setImages] = useState({});
   const [shape, setShape] = useState({ features: [], type: 'FeatureCollection' });
@@ -67,23 +85,7 @@ function Home() {
         setImages(imagesIcon);
       }
 
-      addShape([
-        {
-          id: 'brasil',
-          coordinates: [-49.286041, -16.665136],
-          image: Flag['brasil'],
-        },
-        {
-          id: 'colombia',
-          coordinates: [-73.0810547, 4914894],
-          image: Flag['colombia'],
-        },
-        {
-          id: 'africadosul',
-          coordinates: [24.2578125, -30.9022247],
-          image: Flag['africadosul'],
-        },
-      ]);
+      addShape(SHAPES);
     }
     onMountFeatures();
   }, []);
