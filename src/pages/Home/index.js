@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import MapboxGL from '@react-native-mapbox-gl/maps';
 import BackgroundTimer from 'react-native-background-timer';
 
-import { getCurrentPostion } from '../../utils/Geolocation';
+import { getCurrentPosition } from '../../utils/Geolocation';
 import { requestLocationPermission } from '../../utils/Permission';
 
+import Storage from '../../utils/Storage';
 import Flag from '../../utils/Flag';
 
 import _ from 'underscore';
@@ -29,6 +30,8 @@ const SHAPES = [
   },
 ];
 
+const BACKGROUND_TIMER_INTERVAL = 30000; // three minutes
+
 function Home() {
   const [images, setImages] = useState({});
   const [shape, setShape] = useState({ features: [], type: 'FeatureCollection' });
@@ -39,9 +42,15 @@ function Home() {
 
   useEffect(() => {
     BackgroundTimer.runBackgroundTimer(async () => {
-      const location = await getCurrentPostion();
-      console.log('test call in background....', location);
-    }, 3000);
+      let locations = await Storage.getItem('@locations', true);
+      const location = await getCurrentPosition();
+
+      if (!locations) locations = [];
+
+      locations.push(location);
+
+      await Storage.setItem('@locations', locations);
+    }, BACKGROUND_TIMER_INTERVAL);
 
     BackgroundTimer.stopBackgroundTimer();
   }, []);
@@ -50,7 +59,7 @@ function Home() {
     async function checkPermission() {
       const grantedLocation = await requestLocationPermission();
       if (!grantedLocation && _.isEqual('android', Platform.OS)) {
-        alert('Ative as permissões de geolocalização na configuração do seus dispositivo!');
+        alert('É necessário habilitar as permissões de geolocalização na configuração do seus dispositivo.');
       }
     }
 
