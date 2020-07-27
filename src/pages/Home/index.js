@@ -14,9 +14,44 @@ MapboxGL.setAccessToken('pk.eyJ1IjoiYXV0aW1pbyIsImEiOiJja2F0MnZtdjAwZGNqMnhucm9z
 
 const SHAPES = [
   {
+    id: 'africadosul',
+    coordinates: [24.2578125, -30.9022247],
+    image: Flag['africadosul'],
+  },
+  {
+    id: 'alemanha',
+    coordinates: [10.331446, 50.878857],
+    image: Flag['alemanha'],
+  },
+  {
+    id: 'angola',
+    coordinates: [17.23086, -12.731319],
+    image: Flag['angola'],
+  },
+  {
+    id: 'argentina',
+    coordinates: [-66.792576, -37.774956],
+    image: Flag['argentina'],
+  },
+  {
+    id: 'australia',
+    coordinates: [133.487772, -25.939486],
+    image: Flag['australia'],
+  },
+  {
     id: 'brasil',
     coordinates: [-49.286041, -16.665136],
     image: Flag['brasil'],
+  },
+  {
+    id: 'canada',
+    coordinates: [-106.636789, 58.600234],
+    image: Flag['canada'],
+  },
+  {
+    id: 'china',
+    coordinates: [103.509698, 33.308356],
+    image: Flag['china'],
   },
   {
     id: 'colombia',
@@ -24,9 +59,64 @@ const SHAPES = [
     image: Flag['colombia'],
   },
   {
-    id: 'africadosul',
-    coordinates: [24.2578125, -30.9022247],
-    image: Flag['africadosul'],
+    id: 'costadomarfim',
+    coordinates: [-5.826243, 6.256163],
+    image: Flag['costadomarfim'],
+  },
+  {
+    id: 'egito',
+    coordinates: [29.50579, 25.58788],
+    image: Flag['egito'],
+  },
+  {
+    id: 'estadosunidos',
+    coordinates: [-99.166085, 37.601914],
+    image: Flag['estadosunidos'],
+  },
+  {
+    id: 'gana',
+    coordinates: [-1.168039, 8.86971],
+    image: Flag['gana'],
+  },
+  {
+    id: 'india',
+    coordinates: [77.739021, 16.512119],
+    image: Flag['india'],
+  },
+  {
+    id: 'islandia',
+    coordinates: [-17.885978, 64.492751],
+    image: Flag['islandia'],
+  },
+  {
+    id: 'madagascar',
+    coordinates: [46.468681, -19.367279],
+    image: Flag['madagascar'],
+  },
+  {
+    id: 'marrocos',
+    coordinates: [-8.989079, 30.482828],
+    image: Flag['marrocos'],
+  },
+  {
+    id: 'portugal',
+    coordinates: [-8.110173, 41.042958],
+    image: Flag['portugal'],
+  },
+  {
+    id: 'russia',
+    coordinates: [92.944098, 63.608276],
+    image: Flag['russia'],
+  },
+  {
+    id: 'suica',
+    coordinates: [8.037038, 46.894121],
+    image: Flag['suica'],
+  },
+  {
+    id: 'turquia',
+    coordinates: [37.104284, 39.17207],
+    image: Flag['turquia'],
   },
 ];
 
