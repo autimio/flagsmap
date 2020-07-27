@@ -160,7 +160,6 @@ function Home() {
 
   useEffect(() => {
     BackgroundTimer.runBackgroundTimer(async () => {
-      await Storage.removeItem('@locations');
       let locations = await Storage.getItem('@locations', true);
 
       const location = await getCurrentPosition();
