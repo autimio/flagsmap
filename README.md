@@ -54,3 +54,7 @@ yarn ios
 ```sh
 yarn android
 ```
+
+### Demo
+
+![flagsmap](https://github.com/autimio/flagsmap/blob/master/example/demo.gif)
