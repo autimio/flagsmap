@@ -6,7 +6,7 @@ It is a proof of concept regarding mobile development. The goal is to manipulate
 
 ## What was done
 
-For the map presentation I used the Mapbox SDK. I used shapes with the positions of some countries and their relative flags. To perform the background activities every 3 minutes I used the React Native Background Timer library, in calls except the current position of the device in a storage location for record simulation.
+For the map presentation I used Mapbox SDK. I used shapes with the positions of some countries and their relative flags. To perform the background activities every 3 minutes I used React Native Background Timer library, in calls it keeps the current position of the device in a storage location for record simulation.
 
 ### Built With:
 
