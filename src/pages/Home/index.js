@@ -130,9 +130,39 @@ function Home() {
     alert('pressed');
   }
 
+  function onMountFeatures(items) {
+    const imagesIcon = {};
+    const features = [...shape.features];
+    const propertiesIds = _.pluck(features, 'properties');
+    const featuresIds = _.pluck(propertiesIds, 'id');
+
+    items.map((item) => {
+      if (!_.contains(featuresIds, item.id)) {
+        imagesIcon[item.id] = item.image;
+        features.push({
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: item.coordinates,
+          },
+          properties: {
+            id: item.id,
+            icon: item.id,
+            showPin: true,
+          },
+        });
+      }
+    });
+
+    setShape({ type: 'FeatureCollection', features });
+    setImages(imagesIcon);
+  }
+
   useEffect(() => {
     BackgroundTimer.runBackgroundTimer(async () => {
+      await Storage.removeItem('@locations');
       let locations = await Storage.getItem('@locations', true);
+
       const location = await getCurrentPosition();
 
       if (!locations) locations = [];
@@ -154,39 +184,7 @@ function Home() {
     }
 
     checkPermission();
-
-    function onMountFeatures() {
-      let imagesIcon = {};
-      let features = [...shape.features];
-      let propertiesIds = _.pluck(features, 'properties');
-      let featuresIds = _.pluck(propertiesIds, 'id');
-
-      function addShape(items) {
-        items.map((item) => {
-          if (!_.contains(featuresIds, item.id)) {
-            imagesIcon[item.id] = item.image;
-            features.push({
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: item.coordinates,
-              },
-              properties: {
-                id: item.id,
-                icon: item.id,
-                showPin: true,
-              },
-            });
-          }
-        });
-
-        setShape({ type: 'FeatureCollection', features });
-        setImages(imagesIcon);
-      }
-
-      addShape(SHAPES);
-    }
-    onMountFeatures();
+    onMountFeatures(SHAPES);
   }, []);
 
   return (
