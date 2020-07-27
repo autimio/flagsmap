@@ -6,7 +6,7 @@ It is a proof of concept regarding mobile development. The goal is to manipulate
 
 ## What was done
 
-For the presentation of the map, I used the Mapbox SDK. For manipulating GEOJson, I used shapes with the positions of some countries and their respective flags. And, finally, to perform a background activity every 3 minutes I used a very common library, React Native Background Timer, and your calls I'm saving the current position of the device in local storage for simulation of records.
+For the map presentation I used the Mapbox SDK. I used shapes with the positions of some countries and their relative flags. To perform the background activities every 3 minutes I used the React Native Background Timer library, in calls except the current position of the device in a storage location for record simulation.
 
 ### Built With:
 
