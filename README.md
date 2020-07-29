@@ -1,4 +1,4 @@
-# Flasgs Map
+# Flags Map
 
 ## About The Project
 
