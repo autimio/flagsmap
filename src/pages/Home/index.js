@@ -120,7 +120,7 @@ const SHAPES = [
   },
 ];
 
-const BACKGROUND_TIMER_INTERVAL = 30000; // three minutes
+const BACKGROUND_TIMER_INTERVAL = 180000; // three minutes
 
 function Home() {
   const [images, setImages] = useState({});
